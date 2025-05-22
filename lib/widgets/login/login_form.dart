@@ -62,14 +62,7 @@ class LoginForm extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             disabledColor: Colors.grey,
-            color: Colors.blueGrey,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10),
-              child: Text(
-                textButton,
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
+            color: Color.fromARGB(162, 255, 87, 3),
             elevation: 10,
             onPressed:
                 LoginForm.isLoading
@@ -107,6 +100,13 @@ class LoginForm extends StatelessWidget {
                       }
                       LoginForm.isLoading = false;
                     },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10),
+              child: Text(
+                textButton,
+                style: const TextStyle(color: Colors.white, fontSize: 17),
+              ),
+            ),
             // onPressed: () => Navigator.pushNamed(context, pathButton),
           ),
         ],

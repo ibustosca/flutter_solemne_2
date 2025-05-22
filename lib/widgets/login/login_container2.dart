@@ -14,8 +14,10 @@ class LoginContainer2 extends StatelessWidget {
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Color.fromRGBO(107, 133, 220, 1),
-            Color.fromRGBO(17, 31, 113, 1),
+            /* Color.fromRGBO(107, 133, 220, 1), */
+            /* Color.fromRGBO(17, 31, 113, 1), */
+            Color.fromARGB(225, 255, 159, 25),
+            Color.fromARGB(162, 255, 87, 3),
           ],
         ),
       ),

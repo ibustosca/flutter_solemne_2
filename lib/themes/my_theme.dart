@@ -6,7 +6,11 @@ class MyTheme {
     primaryColor: primary,
     brightness: Brightness.light,
     fontFamily: 'Releway',
-    appBarTheme: const AppBarTheme(color: primary, elevation: 20),
+    appBarTheme: const AppBarTheme(
+      color: Color.fromARGB(162, 255, 87, 3),
+      elevation: 20,
+      iconTheme: IconThemeData(color: Colors.white),
+    ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(foregroundColor: primary),
     ),

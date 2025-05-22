@@ -9,6 +9,8 @@ class AppRoutes {
     'register': (BuildContext context) => RegisterScreen(),
     'home': (BuildContext context) => HomeScreen(),
     'error': (BuildContext context) => ErrorScreen(),
+    'list_product': (BuildContext context) => ListProductScreen(),
+    'edit_product': (BuildContext context) => EditProductScreen(),
   };
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {

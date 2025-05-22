@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_solemne_2/routes/app_routes.dart';
 import 'package:flutter_solemne_2/services/auth_services.dart';
+import 'package:flutter_solemne_2/services/product_service.dart';
 import 'package:flutter_solemne_2/themes/my_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +15,13 @@ class AppState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => AuthServices())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthServices()),
+        ChangeNotifierProvider(create: (_) => ProductService()),
+        // ChangeNotifierProvider(create: (_) => CategorieService()),
+        // ChangeNotifierProvider(create: (_) => CategorieService()),
+        // ChangeNotifierProvider(create: (_) => ProviderService()),
+      ],
       child: MainApp(),
     );
   }

@@ -28,7 +28,6 @@ class AuthServices extends ChangeNotifier {
       'email': email,
       'password': password,
     };
-    print(authData);
     final url = Uri.https(_baseUrl, '/v1/accounts:signUp', {
       'key': _fireBaseToken,
     });
