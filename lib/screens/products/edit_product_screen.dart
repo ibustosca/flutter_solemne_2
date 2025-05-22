@@ -90,10 +90,26 @@ class _ProductScreenBody extends StatelessWidget {
               foregroundColor: Colors.white,
               onPressed: () async {
                 if (!productForm.isValidForm()) return;
-                await productService.deleteProduct(
+                bool success = await productService.deleteProduct(
                   productForm.product,
                   context,
                 );
+                if (success) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Producto eliminado con éxito'),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+                  Navigator.of(context).pushNamed('list_product');
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Error al eliminar el producto'),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+                }
               },
               heroTag: null,
               child: const Icon(Icons.delete_forever),
@@ -104,7 +120,25 @@ class _ProductScreenBody extends StatelessWidget {
             foregroundColor: Colors.white,
             onPressed: () async {
               if (!productForm.isValidForm()) return;
-              await productService.editOrCreateProducts(productForm.product);
+              String result = await productService.editOrCreateProducts(
+                productForm.product,
+              );
+              if (!context.mounted) return;
+              if (result == 'creado' || result == 'editado') {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Producto guardado con éxito'),
+                    duration: Duration(seconds: 3),
+                  ),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Error al guardar el producto'),
+                    duration: Duration(seconds: 3),
+                  ),
+                );
+              }
             },
             heroTag: null,
             child: const Icon(Icons.save),
