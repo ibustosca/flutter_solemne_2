@@ -5,3 +5,6 @@ export 'package:flutter_solemne_2/screens/login_screen.dart';
 export 'package:flutter_solemne_2/screens/register_screen.dart';
 export 'package:flutter_solemne_2/screens/products/list_product_screen.dart';
 export 'package:flutter_solemne_2/screens/products/edit_product_screen.dart';
+export 'package:flutter_solemne_2/screens/categories/list_category_screen.dart';
+export 'package:flutter_solemne_2/screens/categories/edit_category_screen.dart';
+export 'package:flutter_solemne_2/screens/suppliers/list_supplier_screen.dart';

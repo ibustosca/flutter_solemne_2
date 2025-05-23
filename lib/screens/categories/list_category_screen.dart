@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_solemne_2/models/models.dart';
-import 'package:flutter_solemne_2/services/product_service.dart';
+import 'package:flutter_solemne_2/services/category_service.dart';
 import 'package:flutter_solemne_2/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import '../screens.dart';
 
-class ListProductScreen extends StatelessWidget {
-  const ListProductScreen({super.key});
+class ListCategoryScreen extends StatelessWidget {
+  const ListCategoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final productService = Provider.of<ProductService>(context);
-    if (productService.isLoading) return LoadingScreen();
+    final categoryService = Provider.of<CategoryService>(context);
+    if (categoryService.isLoading) return LoadingScreen();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Listado de productos'),
+        title: const Text('Listado de categorías'),
         titleTextStyle: const TextStyle(
           fontSize: 23,
           fontWeight: FontWeight.bold,
@@ -31,15 +31,15 @@ class ListProductScreen extends StatelessWidget {
         ],
       ),
       body: ListView.builder(
-        itemCount: productService.products.length,
+        itemCount: categoryService.categories.length,
         itemBuilder:
             (BuildContext context, index) => GestureDetector(
               onTap: () {
-                productService.SelectProduct =
-                    productService.products[index].copy();
-                Navigator.pushNamed(context, 'edit_product', arguments: 1);
+                categoryService.SelectCategory =
+                    categoryService.categories[index].copy();
+                Navigator.pushNamed(context, 'edit_category', arguments: 1);
               },
-              child: CardProduct(product: productService.products[index]),
+              child: CardCategory(category: categoryService.categories[index]),
             ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -47,15 +47,12 @@ class ListProductScreen extends StatelessWidget {
         foregroundColor: Colors.white,
         child: const Icon(Icons.add),
         onPressed: () {
-          productService.SelectProduct = Listado(
-            productId: 0,
-            productName: '',
-            productPrice: 0,
-            productImage:
-                'https://abravidro.org.br/wp-content/uploads/2015/04/sem-imagem4.jpg',
-            productState: '',
+          categoryService.SelectCategory = ListadoCategorias(
+            categoryId: 0,
+            categoryName: '',
+            categoryState: '',
           );
-          Navigator.pushNamed(context, 'edit_product', arguments: 0);
+          Navigator.pushNamed(context, 'edit_category', arguments: 0);
         },
       ),
     );

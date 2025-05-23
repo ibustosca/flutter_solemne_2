@@ -11,6 +11,9 @@ class AppRoutes {
     'error': (BuildContext context) => ErrorScreen(),
     'list_product': (BuildContext context) => ListProductScreen(),
     'edit_product': (BuildContext context) => EditProductScreen(),
+    'list_category': (BuildContext context) => ListCategoryScreen(),
+    'edit_category': (BuildContext context) => EditCategoryScreen(),
+    'list_supplier': (BuildContext context) => ListSupplierScreen(),
   };
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {

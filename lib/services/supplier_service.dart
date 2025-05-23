@@ -3,55 +3,57 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../models/models.dart';
 
-class ProductService extends ChangeNotifier {
+class SupplierService extends ChangeNotifier {
   final String _baseUrl = "143.198.118.203:8100";
   final String _user = "test";
   final String _pass = "test2023";
 
-  List<Listado> products = [];
-  Listado? SelectProduct;
+  List<ListadoProveedores> suppliers = [];
+  ListadoProveedores? SelectSupplier;
   bool isLoading = true;
   bool _isEditCreate = true;
 
-  ProductService() {
-    loadProducts();
+  SupplierService() {
+    loadSuppliers();
   }
 
-  Future loadProducts() async {
+  Future loadSuppliers() async {
     isLoading = true;
     notifyListeners();
-    final url = Uri.http(_baseUrl, 'ejemplos/product_list_rest/');
+    final url = Uri.http(_baseUrl, 'ejemplos/provider_list_rest/');
     String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.get(url, headers: {'authorization': basicAuth});
-    final productMap = Product.fromJson(response.body);
-    products = productMap.listado;
+    print("asdasdasdasdasdasdasasdasdasd");
+    print(response.body);
+    print("asdasdasdasdasdasdasasdasdasd");
+    final supplierMap = Supplier.fromJson(response.body);
+    suppliers = supplierMap.listado;
     isLoading = false;
     notifyListeners();
   }
 
-  Future editOrCreateProducts(Listado product) async {
+  Future editOrCreateSuppliers(ListadoProveedores supplier) async {
     _isEditCreate = true;
     notifyListeners();
     String result = '';
-    if (product.productId == 0) {
-      print(product.productId);
-      result = await createProduct(product);
+    if (supplier.supplierId == 0) {
+      print(supplier.supplierId);
+      result = await createSupplier(supplier);
     } else {
-      print(product.productId);
-      result = await updateProduct(product);
+      print(supplier.supplierId);
+      result = await updateSupplier(supplier);
     }
     _isEditCreate = false;
     notifyListeners();
     return result;
   }
 
-  Future<String> createProduct(Listado product) async {
-    final url = Uri.http(_baseUrl, 'ejemplos/product_add_rest/');
+  Future<String> createSupplier(ListadoProveedores supplier) async {
+    final url = Uri.http(_baseUrl, 'ejemplos/provider_add_rest/');
     String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
-    print(product.toJson());
     final response = await http.post(
       url,
-      body: product.toJson(),
+      body: supplier.toJson(),
       headers: {
         'authorization': basicAuth,
         'Content-Type': 'application/json; charset=UTF-8',
@@ -59,19 +61,19 @@ class ProductService extends ChangeNotifier {
     );
     final decodeResp = json.decode(response.body);
     if (response.statusCode == 200 && decodeResp['MSJ'] == 'creado') {
-      products.add(product);
+      suppliers.add(supplier);
       return decodeResp['MSJ'];
     } else {
       return 'error';
     }
   }
 
-  Future<String> updateProduct(Listado product) async {
-    final url = Uri.http(_baseUrl, 'ejemplos/product_edit_rest/');
+  Future<String> updateSupplier(ListadoProveedores supplier) async {
+    final url = Uri.http(_baseUrl, 'ejemplos/provider_edit_rest/');
     String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.post(
       url,
-      body: product.toJson(),
+      body: supplier.toJson(),
       headers: {
         'authorization': basicAuth,
         'Content-Type': 'application/json; charset=UTF-8',
@@ -80,12 +82,12 @@ class ProductService extends ChangeNotifier {
     if (response.statusCode == 200) {
       final decodeResp = json.decode(response.body);
       if (decodeResp['MSJ'] == 'creado') {
-        // Actualizar el producto en la lista local
-        final index = products.indexWhere(
-          (element) => element.productId == product.productId,
+        // Actualizar el provider en la lista local
+        final index = suppliers.indexWhere(
+          (element) => element.supplierId == supplier.supplierId,
         );
         if (index != -1) {
-          products[index] = product;
+          suppliers[index] = supplier;
         }
         return decodeResp['MSJ'];
       }
@@ -93,19 +95,22 @@ class ProductService extends ChangeNotifier {
     return 'error';
   }
 
-  Future deleteProduct(Listado product, BuildContext context) async {
-    final url = Uri.http(_baseUrl, 'ejemplos/product_del_rest/');
+  Future deleteSupplier(
+    ListadoProveedores supplier,
+    BuildContext context,
+  ) async {
+    final url = Uri.http(_baseUrl, 'ejemplos/provider_del_rest/');
     String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.post(
       url,
-      body: product.toJson(),
+      body: supplier.toJson(),
       headers: {
         'authorization': basicAuth,
         'Content-Type': 'application/json; charset=UTF-8',
       },
     );
     if (response.statusCode == 200) {
-      products.removeWhere((item) => item.productId == product.productId);
+      suppliers.removeWhere((item) => item.supplierId == supplier.supplierId);
       return true;
     } else {
       return false;

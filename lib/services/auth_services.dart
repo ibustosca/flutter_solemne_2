@@ -4,7 +4,7 @@ import 'dart:convert';
 
 class AuthServices extends ChangeNotifier {
   final String _baseUrl = 'identitytoolkit.googleapis.com';
-  final String _fireBaseToken = '';
+  final String _fireBaseToken = 'AIzaSyAnYDuJqxNX-w7iDlPdQDp9s1mKM809Ge4';
 
   Future<String?> login(String email, String password) async {
     final Map<String, dynamic> authData = {

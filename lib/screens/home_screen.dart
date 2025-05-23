@@ -48,14 +48,14 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 16),
             Button(
               textButton: 'Categorías',
-              pathButton: 'Error',
+              pathButton: 'list_category',
               buttonColor: Color.fromARGB(225, 255, 159, 25),
-            ), // MODIFICAR DESPUES
+            ),
             Button(
               textButton: 'Proveedores',
-              pathButton: 'Error',
+              pathButton: 'list_supplier',
               buttonColor: Color.fromARGB(222, 100, 41, 148),
-            ), // MODIFICAR DESPUES
+            ),
             Button(
               textButton: 'Productos',
               pathButton: 'list_product',
