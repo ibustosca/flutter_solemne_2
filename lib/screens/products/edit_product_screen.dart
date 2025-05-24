@@ -3,7 +3,6 @@ import 'package:flutter_solemne_2/services/product_service.dart';
 import 'package:provider/provider.dart';
 import '../../providers/providers.dart';
 import '../../widgets/widgets.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class EditProductScreen extends StatelessWidget {
   const EditProductScreen({super.key});
@@ -102,6 +101,7 @@ class _ProductScreenBody extends StatelessWidget {
                       duration: Duration(seconds: 2),
                     ),
                   );
+                  await productService.loadProducts();
                   Navigator.of(context).pushNamed('list_product');
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -132,6 +132,8 @@ class _ProductScreenBody extends StatelessWidget {
                     duration: Duration(seconds: 3),
                   ),
                 );
+                await productService.loadProducts();
+                Navigator.of(context).pushNamed('list_product');
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(

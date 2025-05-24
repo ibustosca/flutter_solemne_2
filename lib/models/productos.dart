@@ -20,14 +20,14 @@ class Product {
 
 class Listado {
   Listado({
-    required this.productId,
+    this.productId,
     required this.productName,
     required this.productPrice,
     required this.productImage,
     required this.productState,
   });
 
-  int productId;
+  int? productId;
   String productName;
   int productPrice;
   String productImage;
@@ -45,13 +45,21 @@ class Listado {
     productState: json["product_state"],
   );
 
-  Map<String, dynamic> toMap() => {
-    "product_id": productId,
-    "product_name": productName,
-    "product_price": productPrice,
-    "product_image": productImage,
-    "product_state": productState,
-  };
+  Map<String, dynamic> toMap() {
+    final map = {
+      "product_id": productId,
+      "product_name": productName,
+      "product_price": productPrice,
+      "product_image": productImage,
+      "product_state": productState,
+    };
+
+    if (productId != null) {
+      map["product_id"] = productId.toString();
+    }
+
+    return map;
+  }
 
   Listado copy() => Listado(
     productId: productId,

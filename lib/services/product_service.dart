@@ -33,7 +33,7 @@ class ProductService extends ChangeNotifier {
     _isEditCreate = true;
     notifyListeners();
     String result = '';
-    if (product.productId == 0) {
+    if (product.productId == null) {
       result = await createProduct(product);
     } else {
       result = await updateProduct(product);
@@ -56,6 +56,8 @@ class ProductService extends ChangeNotifier {
     );
     final decodeResp = json.decode(response.body);
     if (response.statusCode == 200 && decodeResp['MSJ'] == 'creado') {
+      final idFromBackend = decodeResp['productId'];
+      product.productId = idFromBackend;
       products.add(product);
       return decodeResp['MSJ'];
     } else {
@@ -76,7 +78,7 @@ class ProductService extends ChangeNotifier {
     );
     if (response.statusCode == 200) {
       final decodeResp = json.decode(response.body);
-      if (decodeResp['MSJ'] == 'creado') {
+      if (decodeResp['MSJ'] == 'editado') {
         // Actualizar el producto en la lista local
         final index = products.indexWhere(
           (element) => element.productId == product.productId,

@@ -34,9 +34,9 @@ class LoginForm extends StatelessWidget {
             ),
             onChanged: (value) => LoginForm.email = value,
             validator: (value) {
-              return (value != null && value.length > 4)
+              return (value != null && value.length > 5)
                   ? null
-                  : "Usuario no puede ser vacío y menor de 4 caracteres";
+                  : "Usuario no puede ser vacío y menos de 6 caracteres";
             },
           ),
           SizedBox(height: 30),
@@ -51,9 +51,9 @@ class LoginForm extends StatelessWidget {
             ),
             onChanged: (value) => LoginForm.password = value,
             validator: (value) {
-              return (value != null && value.length > 4)
+              return (value != null && value.length > 5)
                   ? null
-                  : "Usuario no puede ser vacío y menor de 4 caracteres";
+                  : "Usuario no puede ser vacío y menos de 6 caracteres";
             },
           ),
           SizedBox(height: 30),

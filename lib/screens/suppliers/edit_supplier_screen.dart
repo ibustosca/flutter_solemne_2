@@ -78,6 +78,7 @@ class _SupplierScreenBody extends StatelessWidget {
                       duration: Duration(seconds: 2),
                     ),
                   );
+                  await supplierService.loadSuppliers();
                   Navigator.of(context).pushNamed('list_supplier');
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -109,6 +110,8 @@ class _SupplierScreenBody extends StatelessWidget {
                     duration: Duration(seconds: 3),
                   ),
                 );
+                await supplierService.loadSuppliers();
+                Navigator.of(context).pushNamed('list_supplier');
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(

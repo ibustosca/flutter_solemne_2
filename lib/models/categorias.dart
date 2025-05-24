@@ -22,12 +22,12 @@ class Category {
 
 class ListadoCategorias {
   ListadoCategorias({
-    required this.categoryId,
+    this.categoryId,
     required this.categoryName,
     required this.categoryState,
   });
 
-  int categoryId;
+  int? categoryId;
   String categoryName;
   String categoryState;
 
@@ -43,11 +43,19 @@ class ListadoCategorias {
         categoryState: json["category_state"],
       );
 
-  Map<String, dynamic> toMap() => {
-    "category_id": categoryId,
-    "category_name": categoryName,
-    "category_state": categoryState,
-  };
+  Map<String, dynamic> toMap() {
+    final map = {
+      "category_id": categoryId,
+      "category_name": categoryName,
+      "category_state": categoryState,
+    };
+
+    if (categoryId != null) {
+      map["category_id"] = categoryId.toString();
+    }
+
+    return map;
+  }
 
   ListadoCategorias copy() => ListadoCategorias(
     categoryId: categoryId,

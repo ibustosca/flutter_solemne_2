@@ -33,7 +33,7 @@ class CategoryService extends ChangeNotifier {
     _isEditCreate = true;
     notifyListeners();
     String result = '';
-    if (category.categoryId == 0) {
+    if (category.categoryId == null) {
       result = await createCategory(category);
     } else {
       result = await updateCategory(category);
@@ -56,6 +56,8 @@ class CategoryService extends ChangeNotifier {
     );
     final decodeResp = json.decode(response.body);
     if (response.statusCode == 200 && decodeResp['MSJ'] == 'Categoria creada') {
+      final idFromBackend = decodeResp['categoryId'];
+      category.categoryId = idFromBackend;
       categories.add(category);
       return decodeResp['MSJ'];
     } else {
@@ -74,10 +76,9 @@ class CategoryService extends ChangeNotifier {
         'Content-Type': 'application/json; charset=UTF-8',
       },
     );
-
     if (response.statusCode == 200) {
       final decodeResp = json.decode(response.body);
-      if (decodeResp['MSJ'] == 'Categoria creada') {
+      if (decodeResp['MSJ'] == 'Categoria editada') {
         // Actualizar el provider en la lista local
         final index = categories.indexWhere(
           (element) => element.categoryId == category.categoryId,

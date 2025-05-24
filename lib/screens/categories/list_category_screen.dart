@@ -48,7 +48,6 @@ class ListCategoryScreen extends StatelessWidget {
         child: const Icon(Icons.add),
         onPressed: () {
           categoryService.SelectCategory = ListadoCategorias(
-            categoryId: 0,
             categoryName: '',
             categoryState: '',
           );

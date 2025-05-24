@@ -78,6 +78,7 @@ class _CategoryScreenBody extends StatelessWidget {
                       duration: Duration(seconds: 2),
                     ),
                   );
+                  await categoryService.loadCategories();
                   Navigator.of(context).pushNamed('list_category');
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -101,13 +102,16 @@ class _CategoryScreenBody extends StatelessWidget {
                 categoryForm.category,
               );
               if (!context.mounted) return;
-              if (result == 'Categoria creada') {
+              if (result == 'Categoria creada' ||
+                  result == 'Categoria editada') {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('Categoría guardada con éxito'),
                     duration: Duration(seconds: 3),
                   ),
                 );
+                await categoryService.loadCategories();
+                Navigator.of(context).pushNamed('list_category');
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(

@@ -22,14 +22,14 @@ class Supplier {
 
 class ListadoProveedores {
   ListadoProveedores({
-    required this.supplierId,
+    this.supplierId,
     required this.supplierName,
     required this.supplierLastName,
     required this.supplierMail,
     required this.supplierState,
   });
 
-  int supplierId;
+  int? supplierId;
   String supplierName;
   String supplierLastName;
   String supplierMail;
@@ -49,13 +49,20 @@ class ListadoProveedores {
         supplierState: json["provider_state"],
       );
 
-  Map<String, dynamic> toMap() => {
-    "provider_id": supplierId,
-    "provider_name": supplierName,
-    "provider_last_name": supplierLastName,
-    "provider_mail": supplierMail,
-    "provider_state": supplierState,
-  };
+  Map<String, dynamic> toMap() {
+    final map = {
+      "provider_name": supplierName,
+      "provider_last_name": supplierLastName,
+      "provider_mail": supplierMail,
+      "provider_state": supplierState,
+    };
+
+    if (supplierId != null) {
+      map["provider_id"] = supplierId.toString();
+    }
+
+    return map;
+  }
 
   ListadoProveedores copy() => ListadoProveedores(
     supplierId: supplierId,

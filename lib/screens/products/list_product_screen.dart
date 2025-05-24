@@ -48,7 +48,6 @@ class ListProductScreen extends StatelessWidget {
         child: const Icon(Icons.add),
         onPressed: () {
           productService.SelectProduct = Listado(
-            productId: 0,
             productName: '',
             productPrice: 0,
             productImage:

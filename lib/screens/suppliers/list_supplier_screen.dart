@@ -48,7 +48,6 @@ class ListSupplierScreen extends StatelessWidget {
         child: const Icon(Icons.add),
         onPressed: () {
           supplierService.SelectSupplier = ListadoProveedores(
-            supplierId: 0,
             supplierName: '',
             supplierLastName: '',
             supplierMail: '',

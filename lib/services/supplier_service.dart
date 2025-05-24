@@ -33,7 +33,7 @@ class SupplierService extends ChangeNotifier {
     _isEditCreate = true;
     notifyListeners();
     String result = '';
-    if (supplier.supplierId == 0) {
+    if (supplier.supplierId == null) {
       result = await createSupplier(supplier);
     } else {
       result = await updateSupplier(supplier);
@@ -56,6 +56,8 @@ class SupplierService extends ChangeNotifier {
     );
     final decodeResp = json.decode(response.body);
     if (response.statusCode == 200 && decodeResp['MSJ'] == 'Proveedor creado') {
+      final idFromBackend = decodeResp['providerid'];
+      supplier.supplierId = idFromBackend;
       suppliers.add(supplier);
       return decodeResp['MSJ'];
     } else {
@@ -77,7 +79,6 @@ class SupplierService extends ChangeNotifier {
     if (response.statusCode == 200) {
       final decodeResp = json.decode(response.body);
       if (decodeResp['MSJ'] == 'Proveedor editado') {
-        // Actualizar el provider en la lista local
         final index = suppliers.indexWhere(
           (element) => element.supplierId == supplier.supplierId,
         );
