@@ -13,7 +13,7 @@ class FormSupplier extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.only(bottom: 12, left: 10, right: 10),
         width: double.infinity,
         decoration: _createDecoration(),
         child: Form(
@@ -61,6 +61,12 @@ class FormSupplier extends StatelessWidget {
                 decoration: InputDecorations.authInputDecoration(
                   hinText: 'Mail del proveedor',
                   labelText: 'Mail',
+                ).copyWith(
+                  isDense: true,
+                  contentPadding: const EdgeInsets.only(
+                    top: 12,
+                    bottom: 10,
+                  ), // ← aumenta este valor
                 ),
               ),
             ],
@@ -73,11 +79,7 @@ class FormSupplier extends StatelessWidget {
 
 BoxDecoration _createDecoration() => const BoxDecoration(
   color: Colors.white,
-  borderRadius: BorderRadius.only(
-    bottomLeft: Radius.circular(25),
-    bottomRight: Radius.circular(25),
-  ),
   boxShadow: [
-    BoxShadow(color: Colors.black, offset: Offset(0, 5), blurRadius: 10),
+    BoxShadow(color: Colors.black, offset: Offset(0, 1), blurRadius: 3),
   ],
 );
