@@ -50,11 +50,11 @@ class ListadoProveedores {
       );
 
   Map<String, dynamic> toMap() => {
-    "providerid": supplierId,
-    "product_name": supplierName,
+    "provider_id": supplierId,
+    "provider_name": supplierName,
     "provider_last_name": supplierLastName,
     "provider_mail": supplierMail,
-    "product_state": supplierState,
+    "provider_state": supplierState,
   };
 
   ListadoProveedores copy() => ListadoProveedores(

@@ -14,6 +14,7 @@ class AppRoutes {
     'list_category': (BuildContext context) => ListCategoryScreen(),
     'edit_category': (BuildContext context) => EditCategoryScreen(),
     'list_supplier': (BuildContext context) => ListSupplierScreen(),
+    'edit_supplier': (BuildContext context) => EditSupplierScreen(),
   };
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {

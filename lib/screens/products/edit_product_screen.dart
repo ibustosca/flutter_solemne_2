@@ -3,6 +3,7 @@ import 'package:flutter_solemne_2/services/product_service.dart';
 import 'package:provider/provider.dart';
 import '../../providers/providers.dart';
 import '../../widgets/widgets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class EditProductScreen extends StatelessWidget {
   const EditProductScreen({super.key});

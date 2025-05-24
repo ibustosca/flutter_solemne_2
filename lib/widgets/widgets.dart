@@ -16,3 +16,4 @@ export 'package:flutter_solemne_2/widgets/category/form_category.dart';
 export 'package:flutter_solemne_2/widgets/supplier/card_supplier.dart';
 export 'package:flutter_solemne_2/widgets/supplier/detail_supplier.dart';
 export 'package:flutter_solemne_2/widgets/supplier/mail_supplier.dart';
+export 'package:flutter_solemne_2/widgets/supplier/form_supplier.dart';

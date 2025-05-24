@@ -34,10 +34,8 @@ class ProductService extends ChangeNotifier {
     notifyListeners();
     String result = '';
     if (product.productId == 0) {
-      print(product.productId);
       result = await createProduct(product);
     } else {
-      print(product.productId);
       result = await updateProduct(product);
     }
     _isEditCreate = false;
@@ -48,7 +46,6 @@ class ProductService extends ChangeNotifier {
   Future<String> createProduct(Listado product) async {
     final url = Uri.http(_baseUrl, 'ejemplos/product_add_rest/');
     String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
-    print(product.toJson());
     final response = await http.post(
       url,
       body: product.toJson(),

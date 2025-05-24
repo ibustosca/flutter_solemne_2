@@ -23,9 +23,6 @@ class SupplierService extends ChangeNotifier {
     final url = Uri.http(_baseUrl, 'ejemplos/provider_list_rest/');
     String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.get(url, headers: {'authorization': basicAuth});
-    print("asdasdasdasdasdasdasasdasdasd");
-    print(response.body);
-    print("asdasdasdasdasdasdasasdasdasd");
     final supplierMap = Supplier.fromJson(response.body);
     suppliers = supplierMap.listado;
     isLoading = false;
@@ -37,10 +34,8 @@ class SupplierService extends ChangeNotifier {
     notifyListeners();
     String result = '';
     if (supplier.supplierId == 0) {
-      print(supplier.supplierId);
       result = await createSupplier(supplier);
     } else {
-      print(supplier.supplierId);
       result = await updateSupplier(supplier);
     }
     _isEditCreate = false;
@@ -60,7 +55,7 @@ class SupplierService extends ChangeNotifier {
       },
     );
     final decodeResp = json.decode(response.body);
-    if (response.statusCode == 200 && decodeResp['MSJ'] == 'creado') {
+    if (response.statusCode == 200 && decodeResp['MSJ'] == 'Proveedor creado') {
       suppliers.add(supplier);
       return decodeResp['MSJ'];
     } else {
@@ -81,7 +76,7 @@ class SupplierService extends ChangeNotifier {
     );
     if (response.statusCode == 200) {
       final decodeResp = json.decode(response.body);
-      if (decodeResp['MSJ'] == 'creado') {
+      if (decodeResp['MSJ'] == 'Proveedor editado') {
         // Actualizar el provider en la lista local
         final index = suppliers.indexWhere(
           (element) => element.supplierId == supplier.supplierId,

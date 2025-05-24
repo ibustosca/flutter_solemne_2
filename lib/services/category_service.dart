@@ -34,10 +34,8 @@ class CategoryService extends ChangeNotifier {
     notifyListeners();
     String result = '';
     if (category.categoryId == 0) {
-      print(category.categoryId);
       result = await createCategory(category);
     } else {
-      print(category.categoryId);
       result = await updateCategory(category);
     }
     _isEditCreate = false;
@@ -48,7 +46,6 @@ class CategoryService extends ChangeNotifier {
   Future<String> createCategory(ListadoCategorias category) async {
     final url = Uri.http(_baseUrl, 'ejemplos/category_add_rest/');
     String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
-    print(category.toJson());
     final response = await http.post(
       url,
       body: category.toJson(),
@@ -58,17 +55,10 @@ class CategoryService extends ChangeNotifier {
       },
     );
     final decodeResp = json.decode(response.body);
-    print("-----------------------------");
-    print(decodeResp);
-    print(response.statusCode);
-    print(decodeResp['MSJ']);
-    print("-----------------------------");
     if (response.statusCode == 200 && decodeResp['MSJ'] == 'Categoria creada') {
-      print("Entré al if");
       categories.add(category);
       return decodeResp['MSJ'];
     } else {
-      print("Estoy en el else");
       return 'error';
     }
   }
@@ -87,11 +77,6 @@ class CategoryService extends ChangeNotifier {
 
     if (response.statusCode == 200) {
       final decodeResp = json.decode(response.body);
-      print("-----------------------------");
-      print(decodeResp);
-      print(response.statusCode);
-      print(decodeResp['MSJ']);
-      print("-----------------------------");
       if (decodeResp['MSJ'] == 'Categoria creada') {
         // Actualizar el provider en la lista local
         final index = categories.indexWhere(
