@@ -34,7 +34,7 @@ class LoginAreaForm extends StatelessWidget {
                 Text(
                   textTitle,
                   style: Theme.of(context).textTheme.headlineLarge,
-                ), // Lo recibimos como parámetro
+                ),
                 const SizedBox(height: 10),
                 ChangeNotifierProvider(
                   create: (_) => LoginFormProvider(),

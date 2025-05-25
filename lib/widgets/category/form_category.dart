@@ -35,10 +35,7 @@ class FormCategory extends StatelessWidget {
                   labelText: 'Nombre',
                 ).copyWith(
                   isDense: true,
-                  contentPadding: const EdgeInsets.only(
-                    top: 12,
-                    bottom: 10,
-                  ), // ← aumenta este valor
+                  contentPadding: const EdgeInsets.only(top: 12, bottom: 10),
                 ),
               ),
             ],

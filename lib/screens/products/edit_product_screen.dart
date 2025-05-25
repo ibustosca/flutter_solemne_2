@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_solemne_2/services/product_service.dart';
+import 'package:flutter_solemne_2/services/services.dart';
 import 'package:provider/provider.dart';
 import '../../providers/providers.dart';
 import '../../widgets/widgets.dart';

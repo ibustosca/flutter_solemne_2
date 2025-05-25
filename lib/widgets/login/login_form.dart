@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_solemne_2/providers/login_form_provider.dart';
-import 'package:flutter_solemne_2/services/auth_services.dart';
+import 'package:flutter_solemne_2/providers/providers.dart';
+import 'package:flutter_solemne_2/services/services.dart';
 import 'package:flutter_solemne_2/ui/input_decorations.dart';
 import 'package:provider/provider.dart';
 
@@ -45,7 +45,7 @@ class LoginForm extends StatelessWidget {
             obscureText: true,
             keyboardType: TextInputType.text,
             decoration: InputDecorations.authInputDecoration(
-              hinText: '********',
+              hinText: '******',
               labelText: 'Password',
               prefixIcon: Icons.lock_outline,
             ),
@@ -75,7 +75,6 @@ class LoginForm extends StatelessWidget {
                       );
                       if (!LoginForm.isValidForm()) return;
                       if (loginRegister == 1) {
-                        // CONSUME EL CREATE
                         final String? errorMessage = await authService.login(
                           LoginForm.email,
                           LoginForm.password,
@@ -83,19 +82,31 @@ class LoginForm extends StatelessWidget {
                         if (errorMessage == null) {
                           Navigator.pushNamed(context, pathButton);
                         } else {
-                          print(
-                            errorMessage,
-                          ); // CAMBIARLO POR MENSAJE DE CELULAR
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(errorMessage),
+                              duration: Duration(seconds: 3),
+                            ),
+                          );
                         }
                       } else {
                         final String? errorMessage = await authService
                             .createUser(LoginForm.email, LoginForm.password);
                         if (errorMessage == null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("Usuario creado con éxito!"),
+                              duration: Duration(seconds: 3),
+                            ),
+                          );
                           Navigator.pushNamed(context, pathButton);
                         } else {
-                          print(
-                            errorMessage,
-                          ); // CAMBIARLO POR MENSAJE DE CELULAR
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(errorMessage),
+                              duration: Duration(seconds: 3),
+                            ),
+                          );
                         }
                       }
                       LoginForm.isLoading = false;
@@ -107,7 +118,6 @@ class LoginForm extends StatelessWidget {
                 style: const TextStyle(color: Colors.white, fontSize: 17),
               ),
             ),
-            // onPressed: () => Navigator.pushNamed(context, pathButton),
           ),
         ],
       ),

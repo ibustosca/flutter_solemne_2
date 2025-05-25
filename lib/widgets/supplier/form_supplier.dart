@@ -30,10 +30,11 @@ class FormSupplier extends StatelessWidget {
                   }
                   return null;
                 },
+                style: const TextStyle(fontSize: 18),
                 decoration: InputDecorations.authInputDecoration(
                   hinText: 'Nombre del proveedor',
                   labelText: 'Nombre',
-                ),
+                ).copyWith(labelStyle: const TextStyle(fontSize: 21)),
               ),
               TextFormField(
                 initialValue: supplier.supplierLastName,
@@ -44,10 +45,11 @@ class FormSupplier extends StatelessWidget {
                   }
                   return null;
                 },
+                style: const TextStyle(fontSize: 18),
                 decoration: InputDecorations.authInputDecoration(
                   hinText: 'Segundo nombre del proveedor',
                   labelText: 'Segundo Nombre',
-                ),
+                ).copyWith(labelStyle: const TextStyle(fontSize: 21)),
               ),
               TextFormField(
                 initialValue: supplier.supplierMail,
@@ -58,15 +60,13 @@ class FormSupplier extends StatelessWidget {
                   }
                   return null;
                 },
+                style: const TextStyle(fontSize: 18),
                 decoration: InputDecorations.authInputDecoration(
                   hinText: 'Mail del proveedor',
                   labelText: 'Mail',
                 ).copyWith(
-                  isDense: true,
-                  contentPadding: const EdgeInsets.only(
-                    top: 12,
-                    bottom: 10,
-                  ), // ← aumenta este valor
+                  labelStyle: const TextStyle(fontSize: 21),
+                  contentPadding: const EdgeInsets.only(top: 12, bottom: 10),
                 ),
               ),
             ],

@@ -11,7 +11,7 @@ class CardCategory extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
-        margin: const EdgeInsets.only(top: 30, bottom: 10),
+        margin: const EdgeInsets.only(top: 20, bottom: 5),
         width: double.infinity,
         decoration: _cardDecorations(),
         child: Stack(
@@ -25,8 +25,15 @@ class CardCategory extends StatelessWidget {
 
 BoxDecoration _cardDecorations() => BoxDecoration(
   color: Colors.white,
-  borderRadius: BorderRadius.circular(25),
+  borderRadius: BorderRadius.only(
+    bottomLeft: Radius.circular(25),
+    topRight: Radius.circular(25),
+  ),
   boxShadow: const [
-    BoxShadow(color: Colors.black, offset: Offset(0, 5), blurRadius: 10),
+    BoxShadow(
+      color: Color.fromARGB(255, 104, 104, 104),
+      offset: Offset(0, 4),
+      blurRadius: 10,
+    ),
   ],
 );

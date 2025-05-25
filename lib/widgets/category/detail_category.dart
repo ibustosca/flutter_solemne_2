@@ -7,11 +7,11 @@ class DetailCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 50),
+      padding: const EdgeInsets.only(right: 0),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
         width: double.infinity,
-        height: 80,
+        height: 70,
         decoration: _boxDecorations(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +30,7 @@ class DetailCategory extends StatelessWidget {
 }
 
 BoxDecoration _boxDecorations() => const BoxDecoration(
-  color: Color.fromARGB(242, 41, 112, 148),
+  color: Color.fromRGBO(255, 130, 67, 0.8),
   borderRadius: BorderRadius.only(
     bottomLeft: Radius.circular(25),
     topRight: Radius.circular(25),

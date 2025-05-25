@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_solemne_2/routes/app_routes.dart';
-import 'package:flutter_solemne_2/services/auth_services.dart';
-import 'package:flutter_solemne_2/services/category_service.dart';
-import 'package:flutter_solemne_2/services/product_service.dart';
-import 'package:flutter_solemne_2/services/supplier_service.dart';
+import 'package:flutter_solemne_2/services/services.dart';
 import 'package:flutter_solemne_2/themes/my_theme.dart';
 import 'package:provider/provider.dart';
 

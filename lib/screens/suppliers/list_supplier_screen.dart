@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_solemne_2/models/models.dart';
-import 'package:flutter_solemne_2/services/supplier_service.dart';
+import 'package:flutter_solemne_2/services/services.dart';
 import 'package:flutter_solemne_2/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import '../screens.dart';

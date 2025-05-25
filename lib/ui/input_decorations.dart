@@ -8,7 +8,7 @@ class InputDecorations {
   }) {
     return InputDecoration(
       enabledBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.blueGrey),
+        borderSide: BorderSide(color: Colors.white),
       ),
       focusedBorder: const UnderlineInputBorder(
         borderSide: BorderSide(color: Colors.blueGrey, width: 3),

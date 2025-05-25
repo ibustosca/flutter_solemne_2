@@ -7,7 +7,7 @@ class DetailSupplier extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 50),
+      padding: const EdgeInsets.only(right: 0),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         width: double.infinity,
@@ -18,7 +18,11 @@ class DetailSupplier extends StatelessWidget {
           children: [
             Text(
               supplierName,
-              style: const TextStyle(fontSize: 23, color: Colors.white),
+              style: const TextStyle(
+                fontSize: 23,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -29,10 +33,5 @@ class DetailSupplier extends StatelessWidget {
   }
 }
 
-BoxDecoration _boxDecorations() => const BoxDecoration(
-  color: Color.fromARGB(242, 41, 112, 148),
-  borderRadius: BorderRadius.only(
-    bottomLeft: Radius.circular(25),
-    topRight: Radius.circular(25),
-  ),
-);
+BoxDecoration _boxDecorations() =>
+    const BoxDecoration(color: Color.fromRGBO(255, 174, 106, 0.9));

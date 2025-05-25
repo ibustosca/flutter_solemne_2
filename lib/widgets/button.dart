@@ -27,10 +27,10 @@ class Button extends StatelessWidget {
           elevation: 10,
           onPressed: () => Navigator.pushNamed(context, pathButton),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 50),
             child: Text(
               textButton,
-              style: const TextStyle(color: Colors.white, fontSize: 18),
+              style: const TextStyle(color: Colors.white, fontSize: 23),
             ),
           ),
         ),

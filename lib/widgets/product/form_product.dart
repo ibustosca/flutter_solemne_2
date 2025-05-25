@@ -28,7 +28,7 @@ class FormProduct extends StatelessWidget {
                   if (value == null || value.isEmpty) {
                     return 'El nombre es obligatorio';
                   }
-                  return null; // LO PUSE POR EL ERROR QUE APARECE POR NO RETORNAR NADA
+                  return null;
                 },
                 decoration: InputDecorations.authInputDecoration(
                   hinText: 'Nombre del producto',
@@ -56,17 +56,14 @@ class FormProduct extends StatelessWidget {
                   if (value == null || value.isEmpty) {
                     return 'La url es obligatoria';
                   }
-                  return null; // LO PUSE POR EL ERROR QUE APARECE POR NO RETORNAR NADA
+                  return null;
                 },
                 decoration: InputDecorations.authInputDecoration(
                   hinText: 'Agregue una url',
                   labelText: 'URL',
                 ).copyWith(
                   isDense: true,
-                  contentPadding: const EdgeInsets.only(
-                    top: 12,
-                    bottom: 10,
-                  ), // ← aumenta este valor
+                  contentPadding: const EdgeInsets.only(top: 12, bottom: 10),
                 ),
               ),
             ],

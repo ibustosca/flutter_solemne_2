@@ -6,29 +6,18 @@ class MailSupplier extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
+      width: 300,
       height: 70,
-      alignment: Alignment.center,
-      decoration: _boxDecorations(),
+      alignment: Alignment.centerLeft,
       child: FittedBox(
         fit: BoxFit.contain,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Text(
-            '\$$supplierMail',
-            style: const TextStyle(fontSize: 20, color: Colors.white),
+        child: Text(
+          supplierMail,
+          style: const TextStyle(
+            fontSize: 20,
+            color: Color.fromARGB(255, 116, 116, 116),
           ),
         ),
-      ),
-    );
-  }
-
-  BoxDecoration _boxDecorations() {
-    return const BoxDecoration(
-      color: Color.fromARGB(242, 41, 112, 148),
-      borderRadius: BorderRadius.only(
-        topRight: Radius.circular(25),
-        bottomLeft: Radius.circular(25),
       ),
     );
   }

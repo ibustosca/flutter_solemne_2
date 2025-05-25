@@ -9,9 +9,9 @@ class CardSupplier extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 21),
       child: Container(
-        margin: const EdgeInsets.only(top: 30, bottom: 10),
+        margin: const EdgeInsets.only(top: 20, bottom: 5),
         width: double.infinity,
         decoration: _cardDecorations(),
         child: Stack(
@@ -22,8 +22,8 @@ class CardSupplier extends StatelessWidget {
                   '${supplier.supplierName} ${supplier.supplierLastName}',
             ),
             Positioned(
-              top: 0,
-              right: 0,
+              top: 23,
+              left: 20,
               child: MailSupplier(supplierMail: supplier.supplierMail),
             ),
           ],
@@ -35,8 +35,11 @@ class CardSupplier extends StatelessWidget {
 
 BoxDecoration _cardDecorations() => BoxDecoration(
   color: Colors.white,
-  borderRadius: BorderRadius.circular(25),
   boxShadow: const [
-    BoxShadow(color: Colors.black, offset: Offset(0, 5), blurRadius: 10),
+    BoxShadow(
+      color: Color.fromARGB(255, 139, 139, 139),
+      offset: Offset(0, 5),
+      blurRadius: 10,
+    ),
   ],
 );
